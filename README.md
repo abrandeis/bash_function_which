@@ -1,2 +1,2 @@
-# better-bash_witch
-Better Witch Bash Function Command 
+# which - a better-bash function 
+Better which Bash Function Command 
