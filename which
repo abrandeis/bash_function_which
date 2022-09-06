@@ -37,7 +37,7 @@ which() {
     echo -e " "
     echo -e "${C_GN}$1 is a          :${C_YW}" $(type -t $1) ${C_NC}
 
-    if [[ $(type -t $1) = "alias" ]]; then
+    if [[ $(type -t $1) == "alias" ]]; then
       type -a $1
 
     elif [[ $(type -t $1) == "function" ]]; then
