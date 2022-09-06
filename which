@@ -1,9 +1,26 @@
-# :::                         ## Remove which as alias so function below works
+#!/bin/bash
+
+#####
+##
+##
+
+#####
+## Color Variables
+C_NC="\e[0m"
+C_RD="\e[31m"
+C_GN="\e[32m"
+C_YW="\e[33m"
+
+
+#####
+##  Remove which as alias so function below works
 if [[ $(type -t which) = "alias"  ]]; then
   unalias which
 fi
 
-which() {                     ## [Function which ] - Finds the location of a function, alias, builtin, etc
+#####
+## [Function which ] - Finds the location of a function, alias, builtin, etc
+which() {                     
 ## Written by Adam Brandeis - 2019-11-11
   if [[ -z $1 ]]; then
     echo -e "   ${C_GN} This finds the location of Functions and/or Alias, Builtin, File or Keyword ${C_NC}"
@@ -16,7 +33,7 @@ which() {                     ## [Function which ] - Finds the location of a fun
     echo -e "   ${C_GN} e.g.: which awk    ${C_NC}"    ## Example file
 
 
-  elif [[ $(type -t $1) =~ ^(alias|function|builtin|file|keyword)$ ]]; then
+  elif [[ $(type -t $1) =~ (alias|function|builtin|file|keyword)$ ]]; then
     echo -e " "
     echo -e "${C_GN}$1 is a          :${C_YW}" $(type -t $1) ${C_NC}
 
@@ -30,7 +47,7 @@ which() {                     ## [Function which ] - Finds the location of a fun
       echo " "
       type -a $1
 
-    elif  [[ $(type -t $1) == "builtin" || "file" || "keyword" ]]; then
+    elif  [[ $(type -t $1) =~ (builtin|file|keyword)$ ]]; then
       echo -e "See          :   man $1"
       echo " "
       type -a $1
